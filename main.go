@@ -1,6 +1,0 @@
-package cms
-
-
-func main() {
-	
-}
