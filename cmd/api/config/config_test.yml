@@ -1,0 +1,6 @@
+service:
+  port: 8080
+  debug: true
+database:
+  engine: mock
+  host: "files/mockdb/store.json"

@@ -19,7 +19,7 @@ func main() {
 	}
 
 	// blog
-	repo, e := repo.New(ctx, config.MariaDB)
+	repo, e := repo.New(ctx, config.Database)
 	if e != nil {
 		lg.Fatal(ctx, e)
 	}
@@ -39,10 +39,7 @@ func main() {
 		lg.Fatal(ctx, e)
 	}
 
-	presentation.New(ctx, &config.Service, r, []presentation.Handler{base, v1})
+	api := presentation.New(ctx, &config.Service, r, []presentation.Handler{base, v1})
 
-	// port := ":" + config.Service.Port
-	// lg.Infof(ctx, "service running on port: %d", port)
-	// log.Fatal(
-	// 	http.ListenAndServe(port, presentation.Router.Get()))
+	api.StartServer(ctx)
 }

@@ -13,9 +13,9 @@ const (
 )
 
 type Config struct {
-	Service Service    `json:"service"`
-	Redis   DataSource `yaml:"redis"`
-	MariaDB DataSource `yaml:"mariadb"`
+	Service  Service    `json:"service"`
+	Database DataSource `yaml:"database"`
+	Redis    DataSource `yaml:"redis"`
 }
 
 type Service struct {
@@ -32,13 +32,13 @@ type DataSource struct {
 	Database string `yaml:"database"`
 }
 
-// GetDefault returns service config struct populated with 
+// GetDefault returns service config struct populated with
 // values specified in a file in a default location
 func GetDefault(ctx context.Context) (*Config, error) {
 	return Get(ctx, defaultFilePath)
 }
 
-// Get returns service configuration struct populated with 
+// Get returns service configuration struct populated with
 // values specified in a file with the provided filename
 func Get(ctx context.Context, filePath string) (conf *Config, e error) {
 	var confFile []byte

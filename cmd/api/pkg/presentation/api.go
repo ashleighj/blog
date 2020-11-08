@@ -20,7 +20,7 @@ type API struct {
 func (a *API) StartServer(ctx context.Context) {
 	portToListen := ":" + a.conf.Port
 
-	logger.Infof(ctx, "server running on port: %d", a.conf.Port)
+	logger.Infof(ctx, "server running on port: %s", a.conf.Port)
 	log.Fatal(
 		http.ListenAndServe(portToListen, a.router.r),
 	)
