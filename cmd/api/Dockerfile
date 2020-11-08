@@ -42,7 +42,7 @@ USER gouser
 
 # Copy files from builder
 # Uncomment this line for builds on your local machine
-COPY --from=builder /${project}/settings/settings.yml ${project}/config/config.yml
+# COPY --from=builder /${project}/settings/settings.yml ${project}/config/config.yml
 COPY --from=builder /${project}/${project} ${project}/
 COPY --from=builder --chown=gouser:gouser /${project}/files/ /${project}/files/
 
